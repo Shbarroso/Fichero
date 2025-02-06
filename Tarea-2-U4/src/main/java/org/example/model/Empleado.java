@@ -107,12 +107,6 @@ public class Empleado {
      */
     @Override
     public String toString() {
-        return "Empleado{" +
-                "identificador='" + identificador + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", puesto='" + puesto + '\'' +
-                ", salario=" + salario +
-                ", fechaNacimiento='" + fechaNacimiento + '\'' +
-                '}';
+        return getIdentificador()+", "+getNombre()+ ", " + getPuesto() + ", " + getSalario() + ", "+ getFechaNacimiento();
     }
 }
