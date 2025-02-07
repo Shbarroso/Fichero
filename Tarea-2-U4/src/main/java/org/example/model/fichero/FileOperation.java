@@ -47,7 +47,7 @@ public class FileOperation implements OperacionesInterfaces {
     private boolean create(String data,File file) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
             writer.write(data);
-            writer.newLine(); 
+            writer.newLine();
             return true;
         } catch (IOException e) {
             return false;
@@ -136,7 +136,36 @@ public class FileOperation implements OperacionesInterfaces {
      */
     @Override
     public boolean update(Empleado empleado) {
+        if (empleado == null || empleado.getIdentificador() == null) {
+            return false;
+        }
+        Set<Empleado> empleados = read(fichero);
+        if (!empleados.contains(empleado)) {
+            return false;
+        }
+        for (Empleado empleadoBuscada : empleados) {
+            if (empleadoBuscada.equals(empleado)) {
+                empleados.remove(empleadoBuscada);
+                empleados.add(empleado);
+                return updateFile(empleados, fichero);
+            }
+        }
         return false;
+    }
+
+
+    private boolean updateFile(Set<Empleado> empleados, File file){
+        String path = file.getAbsolutePath();
+        file.delete();
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            return false;
+        }
+        for (Empleado empleado : empleados) {
+            create(empleado);
+        }
+        return true;
     }
 
     /**
