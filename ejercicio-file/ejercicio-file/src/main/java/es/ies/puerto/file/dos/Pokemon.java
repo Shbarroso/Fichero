@@ -1,13 +1,30 @@
 package es.ies.puerto.file.dos;
 
-import java.util.List;
+import java.util.;
+import java.util.Objects;
 
 public class Pokemon {
 
     private String id;
     private String nombre;
-    private List<String> tipos;
+    private String tipos;
     private String descripcion;
+
+    public Pokemon() {
+    }
+
+    public Pokemon(String id) {
+        this.id = id;
+    }
+
+
+    public Pokemon(String id, String nombre, String tipos, String descripcion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.tipos = tipos;
+        this.descripcion = descripcion;
+    }
+
 
     // Constructor, getters y setters
 
@@ -27,11 +44,11 @@ public class Pokemon {
         this.nombre = nombre;
     }
 
-    public List<String> getTipos() {
+    public String getTipos() {
         return tipos;
     }
 
-    public void setTipos(List<String> tipos) {
+    public void setTipos(String tipos) {
         this.tipos = tipos;
     }
 
@@ -42,4 +59,26 @@ public class Pokemon {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Pokemon)) {
+            return false;
+        }
+        Pokemon pokemon = (Pokemon) o;
+        return Objects.equals(id, pokemon.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nombre, tipos, descripcion);
+    }
+
+    @Override
+    public String toString() {
+        return  getId() + getNombre() + getTipos() + getDescripcion();
+    }
+    
 }
