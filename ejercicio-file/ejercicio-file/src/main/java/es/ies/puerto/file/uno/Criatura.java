@@ -10,6 +10,8 @@ public class Criatura {
     private String descripcion;
     private String categoria;
 
+    public Criatura(){}
+
     /*+
      * Constructor con un solo parametro
      */
