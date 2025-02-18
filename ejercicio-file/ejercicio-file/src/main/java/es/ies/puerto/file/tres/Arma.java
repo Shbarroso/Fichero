@@ -7,6 +7,20 @@ public class Arma {
     private String origen;
     private int fuerza;
 
+    public Arma() {
+    }
+    public Arma(String id) {
+        this.id = id;
+    }
+        
+    public Arma(String id, String nombre, String descripcion, String origen, int fuerza) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.origen = origen;
+        this.fuerza = fuerza;
+    }
+
     public String getId() {
         return id;
     }

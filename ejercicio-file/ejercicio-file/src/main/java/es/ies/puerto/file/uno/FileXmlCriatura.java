@@ -6,7 +6,10 @@ import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -95,7 +98,7 @@ public class FileXmlCriatura {
      */
     public void updateCriatura(Criatura criatura) {
         if (!criaturas.contains(criatura)) {
-            criaturas.set(criaturas.indexOf(0), criatura);
+            criaturas.set(criaturas.indexOf(criatura), criatura);
             aptualizarFichero(criaturas);
         }
     }
@@ -129,6 +132,11 @@ public class FileXmlCriatura {
             categoriaXml.appendChild(doc.createTextNode(criatura.getCategoria()));
             criaturaXml.appendChild(categoriaXml);
         }
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        DOMSource source = new DOMSource(doc);
+        StreamResult result = new StreamResult(new File("src/main/resources/empleados2.xml"));
+        transformer.transform(source, result);
         } catch(Exception e){
 
         }
