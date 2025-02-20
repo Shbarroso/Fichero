@@ -43,7 +43,10 @@ public class FilePokedexXml {
                 }
                 String descripcion = elemento.getElementsByTagName("descripcion").item(0).getTextContent();
                 Pokemon pokemon = new Pokemon(id, nombre, tipos, descripcion);
-                pokemons.add(pokemon);
+                if (!pokemons.contains(pokemon)) {
+                    pokemons.add(pokemon);
+                }
+                
             }
         }
 
