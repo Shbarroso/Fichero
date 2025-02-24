@@ -11,6 +11,9 @@ public class Tributo {
     private boolean voluntario;
     private String fechaSeleccion;
 
+    public Tributo() {
+    }
+
     @JsonCreator
     public Tributo(@JsonProperty("id") int id,
                    @JsonProperty("nombre") String nombre,
@@ -61,5 +64,10 @@ public class Tributo {
         }
         Tributo tributo = (Tributo) o;
         return Objects.equals(id, tributo.id);
+    }
+
+    @Override
+    public String toString() {
+        return getId() + getNombre()+ getDistrito()+ getVoluntario()+ getFechaSeleccion();
     }
 }

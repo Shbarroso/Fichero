@@ -12,6 +12,8 @@ public class Caballero {
     private int nivel;
     private String fechaIngreso;
 
+    public Caballero() {
+    }
     @JsonCreator
     public Caballero(@JsonProperty("id") int id,
                      @JsonProperty("nombre") String nombre,
@@ -61,5 +63,9 @@ public class Caballero {
         Caballero caballero = (Caballero) o;
         return Objects.equals(id, caballero.id);
     }
-   
+
+    @Override
+    public String toString() {
+        return getId() + getNombre() + getConstelacion() + getNivel() + getFechaIngreso();
+    }
 }
