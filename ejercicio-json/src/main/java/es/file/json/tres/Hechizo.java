@@ -1,7 +1,6 @@
 package es.file.json.tres;
 
 import com.fasterxml.jackson.annotation.*;
-import java.time.LocalDate;
 import java.util.Objects;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -11,6 +10,7 @@ public class Hechizo {
     private String tipo;
     private boolean esOscuro;
     private String fechaCreacion;
+    public Hechizo(){}
 
     @JsonCreator
     public Hechizo(@JsonProperty("id") int id,
@@ -64,5 +64,11 @@ public class Hechizo {
         Hechizo hechizo = (Hechizo) o;
         return Objects.equals(id, hechizo.id);
     }
+
+    @Override
+    public String toString() {
+        return getId() + getNombre() + getTipo() + isEsOscuro() + getFechaCreacion();
+    }
+
 
 }

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CaballeroService {
@@ -17,16 +16,9 @@ public class CaballeroService {
     public CaballeroService() {
         objectMapper = new ObjectMapper();
         file = new File(path);
-        loadFile(file);
-
+        listCaballero = loadAll();
     }
-    private void loadFile(File file) {
-        try {
-            listCaballero = objectMapper.readValue(file, new TypeReference<List<Caballero>>() {});
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+   
     public Caballero findById(int id) {
         Caballero caballero = new Caballero(id);
         int posicion = listCaballero.indexOf(caballero);
@@ -44,6 +36,10 @@ public class CaballeroService {
         }
     }
     public List<Caballero> findByDateRange(String startDate, String endDate) {
+        if (startDate == null || endDate == null) {
+            return null;
+        }
+        
         return null;
     }
 
@@ -52,6 +48,11 @@ public class CaballeroService {
     }
     
     public List<Caballero> loadAll() {
+        try {
+            listCaballero = objectMapper.readValue(file, new TypeReference<List<Caballero>>() {});
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return listCaballero;
     }
     
