@@ -3,7 +3,6 @@ package es.file.json.uno;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import es.file.json.tres.Hechizo;
 
 import java.io.File;
 import java.time.LocalDate;
