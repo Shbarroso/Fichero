@@ -25,7 +25,7 @@ class CaballeroServiceTest {
     @AfterEach
     void afterEach() {
         caballeroService.delete(caballero);
-        Assertions.assertEquals(4, caballeroService.loadAll().size());
+        Assertions.assertEquals(4, caballeroService.getList().size());
     } 
 
     @Test
@@ -36,7 +36,7 @@ class CaballeroServiceTest {
 
     @Test
     void addTributoTest() {
-        Assertions.assertEquals(5, caballeroService.loadAll().size());
+        Assertions.assertEquals(5, caballeroService.getList().size());
     }
 
     @Test
@@ -81,5 +81,17 @@ class CaballeroServiceTest {
         List<Caballero> caballeros = caballeroService.findByDateRange("1986-10-11", "1986-10-13");
         Assertions.assertEquals(3, caballeros.size());
 
+    }
+
+    @Test
+    void deleteNullTest() {
+        Boolean resultado = caballeroService.delete(null);
+        Assertions.assertFalse(resultado); 
+    }
+
+    @Test
+    void findByDateRangeNullTest() {
+        List<Caballero> caballero1 = caballeroService.findByDateRange(null, null);
+        Assertions.assertNull(caballero1); 
     }
 }
