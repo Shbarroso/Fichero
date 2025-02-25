@@ -3,7 +3,12 @@ package es.file.json.uno;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import es.file.json.tres.Hechizo;
+
 import java.io.File;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CaballeroService {
@@ -12,13 +17,19 @@ public class CaballeroService {
 
     List<Caballero> listCaballero;
     File file;
-
+    /**
+     * Constructor con 3 parametros.
+     */
     public CaballeroService() {
         objectMapper = new ObjectMapper();
         file = new File(path);
         listCaballero = loadAll();
     }
-   
+    /**
+     * Funcion que encuentra un caballero por id.
+     * @param id
+     * @return
+     */
     public Caballero findById(int id) {
         Caballero caballero = new Caballero(id);
         int posicion = listCaballero.indexOf(caballero);
@@ -27,7 +38,11 @@ public class CaballeroService {
         }
         return listCaballero.get(posicion);
     }
-
+    /**
+     * Funcion para leer
+     * @param file
+     * @param caballeros
+     */
     public void saveFile(File file, List<Caballero> caballeros) {
         try {
             objectMapper.writeValue(file, caballeros);
@@ -35,18 +50,39 @@ public class CaballeroService {
             e.printStackTrace();
         }
     }
+    /**
+     * Funcion que compara dos rango de fechas.
+     * @param startDate
+     * @param endDate
+     * @return
+     */
     public List<Caballero> findByDateRange(String startDate, String endDate) {
-        if (startDate == null || endDate == null) {
+       if (startDate == null || endDate == null||startDate.isEmpty()||endDate.isEmpty()) {
             return null;
         }
-        
-        return null;
+        List<Caballero> caballeros = new ArrayList<>();
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate fechaInicio = LocalDate.parse(startDate,formato);
+        LocalDate fechaFin = LocalDate.parse(endDate,formato);
+        for (Caballero caballero : listCaballero) {
+            LocalDate fecha = LocalDate.parse(caballero.getFechaIngreso(), formato);
+            if (!fecha.isBefore(fechaInicio) && !fecha.isAfter(fechaFin)) {
+                caballeros.add(caballero);
+            }
+        }
+        return caballeros;
     }
-
+    /**
+     * Funcion para obtener la lista.
+     * @return
+     */
     public List<Caballero> getList() {
         return listCaballero;
     }
-    
+    /**
+     * Funcion para leer
+     * @return
+     */
     public List<Caballero> loadAll() {
         try {
             listCaballero = objectMapper.readValue(file, new TypeReference<List<Caballero>>() {});
@@ -55,9 +91,11 @@ public class CaballeroService {
         }
         return listCaballero;
     }
-    
-    
-    
+    /**
+     * Funcion que añade un caballero.
+     * @param obj
+     * @return
+     */
     public boolean add(Caballero obj) {
         if (obj == null) {
             return false;
@@ -72,7 +110,11 @@ public class CaballeroService {
         }
         return true;
     }
-
+    /**
+     * Funcion que elimina un caballero.
+     * @param obj
+     * @return
+     */
     public boolean delete(Caballero obj) {
         if (obj == null){
             return false;
