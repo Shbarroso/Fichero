@@ -23,7 +23,7 @@ public class CaballeroService {
     public CaballeroService() {
         objectMapper = new ObjectMapper();
         file = new File(path);
-        listCaballero = loadAll();
+        loadAll();
     }
     /**
      * Funcion que encuentra un caballero por id.
