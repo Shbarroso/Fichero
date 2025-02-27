@@ -64,7 +64,7 @@ public class Fecha {
     }
 
     public int compararFechas(LocalDate fecha1, LocalDate fecha2) {
-        return 1000;
+        return fecha1.compareTo(fecha2);
     }
 
     public boolean esBisiesto(LocalDate fecha) {
@@ -72,19 +72,21 @@ public class Fecha {
     }
 
     public String obtenerDiaSemana(LocalDate fecha) {
-        return null;
+        DayOfWeek dia = fecha.getDayOfWeek();
+        return dia.toString();
     }
 
     public int obtenerDiaDelAnio(LocalDate fecha) {
-        return -1;
+        int dia = fecha.getDayOfYear();
+        return dia;
     }
 
     public LocalDate obtenerPrimerDiaMes(LocalDate fecha) {
-        return null;
+        return fecha.withDayOfMonth(1);
     }
 
     public LocalDate obtenerUltimoDiaMes(LocalDate fecha) {
-        return null;
+        return fecha.withDayOfMonth(fecha.lengthOfMonth());
     }
 
     public ZonedDateTime convertirZonaHoraria(LocalDateTime fechaHora, String zona) {
