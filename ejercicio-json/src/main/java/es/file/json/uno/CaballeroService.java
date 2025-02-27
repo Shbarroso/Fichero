@@ -24,6 +24,12 @@ public class CaballeroService {
         file = new File(path);
         loadAll();
     }
+    public CaballeroService(String ruta){
+        objectMapper = new ObjectMapper();
+        path = ruta;
+        file = new File(path);
+        loadAll();
+    }
     /**
      * Funcion que encuentra un caballero por id.
      * @param id
@@ -44,7 +50,7 @@ public class CaballeroService {
      */
     public void saveFile(File file, List<Caballero> caballeros) {
         try {
-            objectMapper.writeValue(file, caballeros);
+            objectMapper.writeValue(file, caballeros); // java to json
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -84,7 +90,7 @@ public class CaballeroService {
      */
     public List<Caballero> loadAll() {
         try {
-            listCaballero = objectMapper.readValue(file, new TypeReference<List<Caballero>>() {});
+            listCaballero = objectMapper.readValue(file, new TypeReference<List<Caballero>>() {}); // json to java
         } catch (Exception e) {
             e.printStackTrace();
         }
