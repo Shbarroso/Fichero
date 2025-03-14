@@ -7,15 +7,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="TOP_CENTER" prefHeight="358.0" prefWidth="436.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.ies.puerto.controller.LoginController">
+<VBox alignment="TOP_CENTER" prefHeight="358.0" prefWidth="436.0" spacing="20.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.ies.puerto.controller.LoginController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
+    <Button fx:id="openRegistroButton" alignment="BOTTOM_CENTER" onAction="#openRegistrarClick" prefHeight="26.0" prefWidth="163.0" text="Registrar" textAlignment="CENTER">
+      <VBox.margin>
+         <Insets left="300.0" />
+      </VBox.margin></Button>
    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario:" />
-   <TextField fx:id="textFieldUsuario" prefHeight="24.0" prefWidth="197.0" />
+   <TextField fx:id="textFieldUsuario" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="24.0" prefWidth="170.0" />
    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
-   <PasswordField fx:id="textFieldPassword" />
-    <Button alignment="TOP_CENTER" onAction="#onLoginButtonClick" prefHeight="26.0" prefWidth="163.0" text="Aceptar" textAlignment="CENTER" />
+   <PasswordField fx:id="textFieldPassword" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="10.0" prefWidth="170.0" />
+   <Button fx:id="openAceptarr" mnemonicParsing="false" onAction="#onLoginButtonClick" text="Aceptar" />
    <Text fx:id="textFieldMensaje" strokeType="OUTSIDE" strokeWidth="0.0" text="Soy el texto inical" />
-   <Button fx:id="openRegistrarButton" mnemonicParsing="false" onAction="#openRegistrarClick" text="Open Registrar" />
+   <Button fx:id="openRecuperarButton" mnemonicParsing="false" onAction="#openRecuperarClick" text="Recuperar Contrasña" />
 </VBox>

@@ -27,6 +27,18 @@ public class LoginController {
 
     @FXML
     private Button openRegistrarButton;
+    
+    @FXML
+    private Button openAceptarr;
+
+    @FXML
+    private Button openRegistroButton;
+    
+    @FXML
+    private Button openRecuperarButton;
+
+
+    
 
     @FXML
     protected void onLoginButtonClick() {
@@ -53,6 +65,22 @@ public class LoginController {
             FXMLLoader fxmlLoader = new FXMLLoader(PrincipalApplication.class.getResource("registro.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 820, 640);
             stage.setTitle("Pantalla Registro");
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    
+    }
+     @FXML
+    protected void openRecuperarClick() {
+
+        try {
+            Stage stage = (Stage) openRecuperarButton.getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(PrincipalApplication.class.getResource("recuperar.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 820, 640);
+            stage.setTitle("Pantalla Recuperar");
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {

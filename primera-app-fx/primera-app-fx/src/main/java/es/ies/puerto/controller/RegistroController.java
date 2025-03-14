@@ -17,6 +17,12 @@ public class RegistroController {
     @FXML PasswordField textFieldPassword;
 
     @FXML PasswordField textFieldPasswordRepit;
+    
+    @FXML TextField textFieldNombre;
+
+    @FXML TextField textFieldEmail;
+
+    @FXML TextField textFieldEmailRepit;
 
     @FXML
     protected void onClickRegistar() {
