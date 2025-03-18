@@ -8,13 +8,13 @@
 
 <VBox alignment="TOP_CENTER" prefHeight="553.0" prefWidth="472.0" spacing="20.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.ies.puerto.controller.RegistroController">
    <children>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario" />
+      <Text fx:id="textUsuario" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario" />
       <TextField fx:id="textFiledUsuario" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="10.0" prefWidth="170.0" />
-      <Text fx:id="textMensaje1" layoutX="213.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
+      <Text fx:id="textContrasenia" layoutX="213.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
       <PasswordField fx:id="textFieldPassword" maxHeight="-Infinity" maxWidth="-Infinity" promptText="introducir password" />
-      <Text fx:id="textMensaje2" strokeType="OUTSIDE" strokeWidth="0.0" text="Repetir Password" />
+      <Text fx:id="textContraseniaRepit" strokeType="OUTSIDE" strokeWidth="0.0" text="Repetir Password" />
       <PasswordField fx:id="textFieldPasswordRepit" maxHeight="-Infinity" maxWidth="-Infinity" promptText="repetir password" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
+      <Text fx:id="textNombre" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
       <TextField fx:id="textFiledNombre" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="10.0" prefWidth="170.0" />
       <Text fx:id="textMensaje" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
       <TextField fx:id="textFiledEmail" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="10.0" prefWidth="170.0" />
