@@ -1,17 +1,22 @@
 package es.ies.puerto.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+
 import es.ies.puerto.PrincipalApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class LoginController {
+public class LoginController extends AbstractController{
+    public Properties propertiesIdioma;
     
     private final String usuario = "pokemon";
     private final String password = "pokemon";
@@ -36,8 +41,34 @@ public class LoginController {
     
     @FXML
     private Button openRecuperarButton;
+    
+    @FXML
+    private Text textUsuario;
 
+    @FXML
+    private Text textContrasenia;
 
+    @FXML
+    private ComboBox comboIdioma;
+
+    @FXML
+    public void initialize(){
+        List<String> idiomas = new ArrayList<>();
+        idiomas.add("es");
+        idiomas.add("en");
+        idiomas.add("fr");
+
+        comboIdioma.getItems().add("es");
+        comboIdioma.getItems().add("en");
+        comboIdioma.getItems().add("fr");
+
+    }
+    @FXML
+    protected void cambiarIdioma(){
+        setPropertiesIdioma(loadIdioma("idiomas", comboIdioma.getValue().toString()));
+        textUsuario.setText(getPropertiesIdioma().getProperty("textUsuario"));
+        textContrasenia.setText(getPropertiesIdioma().getProperty("textContrasenia"));
+    }
     
 
     @FXML

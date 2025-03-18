@@ -1,6 +1,6 @@
 package es.ies.puerto;
 
-public class Idioma {
+public enum Idioma {
     INGLES, FRANCES, ESPAÑOL;
     
     

@@ -6,7 +6,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
-public class RegistroController {
+public class RegistroController extends AbstractController{
     
     @FXML TextField textFiledUsuario;
 
