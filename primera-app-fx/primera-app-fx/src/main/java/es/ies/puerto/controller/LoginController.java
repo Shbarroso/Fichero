@@ -95,6 +95,12 @@ public class LoginController extends AbstractController{
             Stage stage = (Stage) openRegistrarButton.getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader(PrincipalApplication.class.getResource("registro.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 820, 640);
+            
+            RegistroController registroController = fxmlLoader.getController();
+            registroController.setPropertiesIdioma(this.getPropertiesIdioma());
+
+            registroController.postConstructor();
+
             stage.setTitle("Pantalla Registro");
             stage.setScene(scene);
             stage.show();
