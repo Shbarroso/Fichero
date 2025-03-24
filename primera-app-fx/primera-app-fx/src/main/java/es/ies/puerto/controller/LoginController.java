@@ -99,8 +99,6 @@ public class LoginController extends AbstractController{
             RegistroController registroController = fxmlLoader.getController();
             registroController.setPropertiesIdioma(this.getPropertiesIdioma());
 
-            registroController.postConstructor();
-
             stage.setTitle("Pantalla Registro");
             stage.setScene(scene);
             stage.show();

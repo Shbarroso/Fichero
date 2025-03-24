@@ -26,9 +26,23 @@ public class RegistroController extends AbstractController{
 
     @FXML
     protected void onClickRegistar() {
+        if (textFiledUsuario == null || textFiledUsuario.getText().isEmpty()) {
+            textMensaje.setText("¡El nombre de usuario no puede ser nulo o vacio!");
+            return;
+        }
+        if (textFieldNombre == null || textFieldNombre.getText().isEmpty()) {
+            textMensaje.setText("");
+            return;
+        }
+        if (textFieldEmail == null ||  textFieldEmail.getText().isEmpty()
+                || textFieldEmailRepit == null || textFieldEmailRepit.getText().isEmpty()) {
+            textMensaje.setText("");
+            return;
+        }
 
         if (textFieldPassword == null ||  textFieldPassword.getText().isEmpty() 
-            || textFieldPasswordRepit == null || textFieldPasswordRepit.getText().isEmpty()) {
+            || textFieldPasswordRepit == null || textFieldPasswordRepit.getText().isEmpty()
+                || textFieldEmailRepit == null || textFieldEmailRepit.getText().isEmpty()) {
             textMensaje.setText("¡El password no puede ser nulo o vacio!");
             return;
         }
